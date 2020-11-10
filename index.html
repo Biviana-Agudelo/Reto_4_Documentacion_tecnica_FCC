@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/cd2331958e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Documentación Técnica</title>
+</head>
+
+<body>
+  <nav id="navbar">
+    <header>
+      <h3>Domótica por medio de Arduino</h3>
+    </header>
+    <a href="#Introduccion_y_Objetivos" class="nav-link">Introducción y objetivos</a>
+    <a href="#Que_es_la Domotica" class="nav-link">Qué es la Domótica</a>
+    <a href="#Como_funciona_la_Domotica" class="nav-link">Cómo funciona la Domótica</a>
+    <a href="#Que_es_Arduino" class="nav-link">Qué es Arduino</a>
+    <a href="#Como_funciona_Arduino" class="nav-link">Cómo funciona arduino</a>
+    <a href="#Dispositivos_acoplables_a_Arduino" class="nav-link">Dispositivos acoplables a Arduino</a>
+    <a href="#Ejemplo_de_codigo_detector_de_movimiento_con_Arduino_y_Sensor_PIR" class="nav-link">Ejemplo de código
+      detector de movimiento con Arduino y sensor PIR</a>
+    <a href="#Ejemplo_de_codigo_Sensor_Ultrasonico" class="nav-link">Ejemplo de código Sensor Ultrasónico</a>
+    <a href="#Ejemplo_de_codigo_bluetooth_con_Arduino" class="nav-link">Ejemplo de código bluetooth con Arduino</a>
+    <a href="#Ejemplo_de_codigo_sensor_de_Humedad_del_suelo_con_Arduino" class="nav-link">Ejemplo de código sensor de Humedad del suelo con Arduino</a>
+    <a href="#Ejemplo_de_codigo_detector_de_llama_con_Arduino" class="nav-link">Ejemplo de código detector de llama con Arduino</a>
+    <a href="#Referencia" class="nav-link">Referencia</a>
+  </nav>
+  <main id="main-doc">
+    <section id="Introduccion_y_Objetivos" class="main-section">
+      <header>
+        <h3>Introducción y Objetivos</h3>
+      </header>
+      <p>Aunque el ser humano todavía no está arraigado a las propiedades que ofrece la
+        domótica es un hecho que en un futuro estará instalada en cualquier vivienda. Pero
+        ¿qué es la domótica? Se podría definir como el conjunto de tecnologías aplicadas al
+        control y la automatización inteligente de la vivienda, que permite una gestión eficiente
+        del uso de la energía además de aportar seguridad, confort, y comunicación entre el
+        usuario y el sistema. Para poder conseguir las propiedades comentadas anteriormente
+        es necesario que los sistemas recojan la información de su entorno con sensores y
+        dispongan de la lógica para actuar en consecuencia utilizando actuadores.
+      </p>
+      <p>Actualmente los sistemas domóticos tienen un precio muy alto de instalación con lo
+        cual solo es posible verlo en casas de lujo. Estos suelen utilizar buses de transmisión de
+        información que posibilitan una domótica robusta como son el EIB, X10, CEBus,
+        LonWorks/LongTalk y ZigBee. Una alternativa más barata y casera consiste en la
+        utilización de placas Arduino.</p>
+      <p>En este Documento hablaremos de la plataforma Arduino en la que nos apoyaremos con
+        otros dispositivos para poder construir un sistema domótico simple. Arduino es una
+        plataforma de hardware libre creada en 2005, basada en una placa con
+        un microcontrolador y un entorno de desarrollo, diseñada para facilitar el uso de la
+        electrónica en proyectos multidisciplinares.
+      </p>
+    </section>
+    <section id="Que_es_la Domotica" class="main-section">
+      <header>
+        <h3>Qué es la Domótica</h3>
+      </header>
+      <ul>
+        <li>La domótica permite la comunicación entre el usuario y un sistema de objetos conectados que conforman una
+          vivienda.</li>
+        <li>Los objetos conectados son cualquier tipo de dispositivo con conexión a internet. Esto es posible gracias al
+          Internet de las cosas (IoT por sus siglas en inglés).</li>
+        <li>Un sistema domótico recopila la información procedente de esos objetos conectados, la procesa y emite
+          órdenes que automatizan determinadas acciones establecidas por el usuario.</li>
+        <li>Domótica y wifi van de la mano, ya que éste hace posible el control domótico de los objetos mediante la
+          intercomunicación y el traspaso de información entre todos los dispositivos que conforman la central domótica
+          de un hogar.</li>
+        <li>La domótica doméstica está orientada al confort de los usuarios mediante esa automatización de acciones en
+          un entorno inalámbrico que permiten conformar lo que se conoce como casa inteligente.</li>
+      </ul>
+    </section>
+    <section id="Como_funciona_la_Domotica" class="main-section">
+      <header>
+        <h3>Cómo funciona la Domótica</h3>
+      </header>
+      <p>El funcionamiento es más sencillo de lo que parece. Necesitamos un hogar con una conexión a Internet y una red
+        Wifi. Los dispositivos que conforman la red domótica se sirven de la red wifi para enviar y recibir la
+        información que recopilan y compartirla tanto con el usuario como con el resto del sistema.</p>
+      <p>La interacción habitual entre el usuario y dicho sistema es a través de una aplicación móvil. Los datos se
+        almacenan, y por medio de una dirección IP específica, son transmitidos a la nube o servidor de la compañía a la
+        que pertenece el dispositivo. Un back-end garantiza el tiempo de actividad, la seguridad y la integración. Los
+        dispositivos pueden funcionar sin conexión, y una vez establecida, estos datos son enviados y actualizados en la
+        nube.</p>
+      <p>A su vez, el dispositivo podrá filtrar y enviar diferentes tipos de datos dependiendo de su función y de la
+        orden comandada. Así, por ejemplo, nuestro GPS del coche puede comunicarse con el termostato de nuestro hogar al
+        detectar que nos acercamos a casa para aumentar la temperatura y encontrarnos nuestro hogar ya calentado nada
+        más cruzar la puerta.</p>
+    </section>
+    <section id="Que_es_Arduino" class="main-section">
+      <header>
+        <h3>Qué es Arduino</h3>
+      </header>
+      <p>Arduino es una plataforma de creación de electrónica de código abierto, la cual está basada en hardware y
+        software libre, flexible y fácil de utilizar para los creadores y desarrolladores. Esta plataforma permite crear
+        diferentes tipos de microordenadores de una sola placa a los que la comunidad de creadores puede darles
+        diferentes tipos de uso.
+
+        Para poder entender este concepto, primero vas a tener que entender los conceptos de hardware libre y el
+        software libre. El hardware libre son los dispositivos cuyas especificaciones y diagramas son de acceso público,
+        de manera que cualquiera puede replicarlos. Esto quiere decir que Arduino ofrece las bases para que cualquier
+        otra persona o empresa pueda crear sus propias placas, pudiendo ser diferentes entre ellas pero igualmente
+        funcionales al partir de la misma base.</p>
+      <p>El software libre son los programas informáticos cuyo código es accesible por cualquiera para que quien quiera
+        pueda utilizarlo y modificarlo. Arduino ofrece la plataforma Arduino IDE (Entorno de Desarrollo Integrado), que
+        es un entorno de programación con el que cualquiera puede crear aplicaciones para las placas Arduino, de manera
+        que se les puede dar todo tipo de utilidades.
+
+        El proyecto nació en 2003, cuando varios estudiantes del Instituto de Diseño Interactivo de Ivrea, Italia, con
+        el fin de facilitar el acceso y uso de la electrónico y programación. Lo hicieron para que los estudiantes de
+        electrónica tuviesen una alternativa más económica a las populares BASIC Stamp, unas placas que por aquel
+        entonces valían más de cien dólares, y que no todos se podían permitir.</p>
+      <p>El resultado fue Arduino, una placa con todos los elementos necesarios para conectar periféricos a las entradas
+        y salidas de un microcontrolador, y que puede ser programada tanto en Windows como macOS y GNU/Linux. Un
+        proyecto que promueve la filosofía 'learning by doing', que viene a querer decir que la mejor manera de aprender
+        es cacharreando.</p>
+      <img src="/img/Arduino.png" alt="Placa Arduino" id="img-arduino">
+    </section>
+    <section id="Como_funciona_Arduino" class="main-section">
+      <header>
+        <h3>Cómo funciona Arduino</h3>
+      </header>
+      <p>El Arduino es una placa basada en un microcontrolador, específicamente un ATMEL. Un microcontrolador es un
+        circuito integrado (podríamos hablar de un microhip) en el cual se pueden grabar instrucciones. Estas
+        instrucciones se escriben utilizando un lenguaje de programación que permite al usuario crear programas que
+        interactúan con circuitos electrónicos.
+
+        Normalmente un microcontrolador posee entradas y salidas digitales, entradas y salidas analógicas y entradas y
+        salidas para protocolos de comunicación. Un Arduino es una placa que cuenta con todos los elementos necesarios
+        para conectar periféricos a las entradas y salidas del microcontrolador. Se trata de una placa impresa con todos
+        los componentes necesarios para el funcionamiento del micro y su comunicación con una computadora a través de
+        comunicación serial.</p>
+      <p>El funcionamiento de un sistema Arduino se basa en tres pilares. Por un lado, tenemos una interfaz de entrada
+        que se corresponderá con los diferentes periféricos o sensores que conectemos a los puertos que dispone la placa
+        Arduino. Existen infinidad de periféricos o sensores que podemos usar y encontrar en el mercado y que nos
+        permitirán desarrollar diversos proyectos. </p>
+      <p>El segundo paso es tratar las entradas generadas y de eso se va a encargar el microcontrolador con la
+        programación que hagamos del mismo. Para programar el microcontrolador usaremos el entorno de desarrollo de
+        Arduino. Este entorno y el lenguaje de programación usado es bastante intuitivo y cualquier persona sin
+        conocimientos técnicos elevados es capaz de poder desarrollar un programa. A través del puerto USB de la placa
+        Arduino, traspasaremos la programación al microcontrolador. El programa gestionará las entradas para
+        proporcionar las salidas que queramos.</p>
+      <p>Aquí es donde entra el tercer pilar, la interfaz de salida. Una vez procesada la entrada en base a la
+        programación del microcontrolador, se producirá una salida. De la misma forma que tenemos sensores o periféricos
+        de entrada podemos conectar diversos periféricos de salida como displays, altavoces, etc.…</p>
+    </section>
+    <section id="Dispositivos_acoplables_a_Arduino" class="main-section">
+      <header>
+        <h3>Dispositivos acoplables a Arduino</h3>
+      </header>
+      <h4>Sensores</h4>
+      <p>Un sensor es un dispositivo capaz de detectar magnitudes físicas o químicas, llamadas
+        variables de instrumentación, y transformarlas en variables eléctricas. Las variables de
+        instrumentación pueden ser por ejemplo: temperatura, intensidad lumínica, distancia,
+        aceleración, inclinación, desplazamiento, presión, fuerza, torsión, humedad,
+        movimiento, pH, etc. Una magnitud eléctrica puede ser una resistencia eléctrica (como
+        en un detector de temperatura resistivo), una capacidad eléctrica (como en un sensor
+        de humedad), una tensión eléctrica (como en un termopar), una corriente
+        eléctrica (como en un fototransistor), etc.</p>
+      <p>Los sensores siempre que estén activados estarán tomando continuamente la situación
+        actual de una habitación y es el servidor o la placa Arduino quien leerá esta información
+        y decidirá cómo actuar. Pueden ser digitales o analógicos.</p>
+      <p>Los sensores que sean responsables de la seguridad de la vivienda deberían avisar del
+        evento mediante un actuador (por ejemplo un timbre o LED) o algún elemento de
+        comunicación (como un correo electrónico o un mensaje de texto al móvil). También
+        podría almacenarse el suceso en un fichero del servidor.</p>
+      <h6>A continuación se describirán algunos sensores a tener en cuenta en un sistema
+        domótico:</h6>
+      <ul>
+        <li><strong>Módulo de Gas</strong></li>
+        <p>El detector de gas hace que la vivienda gane en
+          seguridad si cuando detecta un nivel alto de gas
+          (lectura HIGH) el sistema avisa a la persona. Sería
+          importante que el sistema pudiera desconectar la
+          mayor parte de red eléctrica posible de la vivienda.
+        </p>
+        <img src="/img/sensor-gas.jpg" alt="sensor gas">
+        <li><strong>Módulo PIR</strong></li>
+        <p>Otro elemento que interviene en la seguridad cuando
+          no hay nadie en casa es un detector de movimiento.
+          En caso de detectar suficiente movimiento se leerá un
+          nivel alto.
+          También se puede utilizar para el confort del ser
+          humano. En caso de detectar movimiento en la
+          habitación encender por ejemplo las luces o la
+          calefacción, dependiendo también de la lectura
+          responsable de los dos casos.</p>
+        <img src="/img/pir.jpg" alt="sensor movimiento">
+        <li><strong>Módulo de Luz</strong></li>
+        <p>Este dispositivo es capaz de detectar el nivel de
+          intensidad de luz que hay en la habitación de forma
+          analógica. El sistema leerá el voltaje y en caso de
+          detectar un nivel bajo de luz podría encender las luces
+          de la habitación siempre y cuando se detecte
+          movimiento.</p>
+        <img src="/img/luz.jpg" alt="sensor luz">
+        <li><strong>Módulo de Temperatura</strong></li>
+        <p>En caso de utilizar calefacción o aire acondicionado
+          el sensor de temperatura puede ayudar a reducir el
+          coste de la factura de la luz y acomodar un poco
+          más al ser humano. Cuando se detecte cierto
+          umbral de temperatura podría apagarse/encender
+          o modificar la potencia de la calefacción.</p>
+        <img src="/img/temperatura.jpg" alt="sensor temperatura">
+        <li><strong>Sensor de Humedad</strong></li>
+        <P>es un sensor que mide la humedad del suelo a partir de la resistencia eléctrica del mismo. Debido al uso
+          bastante simple del módulo, este Suele ser utilizado para sistemas de riego automático.</P>
+        <img src="/img/humedad.jpg" alt="sensor humedad">
+        <li><strong>Sensor de Temperatura + Humedad</strong></li>
+        <p>Este es un sensor de temperatura/humedad. Puedes usar este sensor compatible con Arduino para monitorizar
+          la temperatura ambiente o la humedad. Como proyecto básico, puedes conectar una pantalla LCD a Arduino y
+          hacer que muestre la temperatura/humedad de la habitación.</p>
+        <img src="/img/temperatura-humedad.jpg" alt="sensor tem+humedad">
+        <li><strong>Sensor de Distancia por Ultrasonidos</strong></li>
+        <p>Este sensor envía automáticamente una señal de audio de 40 kHz y detecta si hay una señal de pulso. Envía
+          una señal y, si se recibe de vuelta, calcula la distancia recorrida por la señal, es decir, la distancia
+          desde el sensor hasta el objeto situado delante de él. Puede sentir un objeto en el rango: 2cm~500cm.</p>
+        <img src="/img/ultrasonico.jpg" alt="sensor distancia">
+        <li><strong>Sensor de Golpes</strong></li>
+        <p>En términos sencillos, este es un interruptor que se activa cuando detecta un golpe. Hay un LED que
+          alternativamente da una señal visual del estado del sensor, alto o bajo, y del nivel alto designado por el
+          encendido del LED.</p>
+        <img src="/img/golpes.jpg" alt="sensor golpes">
+        <li><strong>Sensor de Llama</strong></li>
+        <P>Este sensor detecta la presencia de llama y a menudo se utiliza también para detectar la presencia de luz.
+          Detecta una llama o una fuente de luz de una longitud de onda en el rango de 760nm-1100 nm. Una prueba de
+          llama ligera puede ser activada dentro de 0.8m. Si la intensidad de la llama es alta, la distancia de
+          detección aumentará.</P>
+        <img src="/img/llama-fuego.jpg" alt="sensor llama">
+        <li><strong>Módulo de Bluetooth</strong></li>
+        <p>El Bluetooth es uno de los estándares de comunicación entre dispositivos más utilizados en la actualidad,
+          haciendo posible la conexión inalámbrica de todo tipo de aparatos para infinidad de utilidades. Se trata de
+          un dispositivo con un objetivo claro, que no es otro que facilitar el acceso a todas las funciones del hogar
+          inteligente por parte de todos los miembros de la casa.</p>
+        <img src="/img/bluetooth.jpg" alt="sensor bluetooth">
+      </ul>
+    </section>
+    <!--1-->
+    <section id="Ejemplo_de_codigo_detector_de_movimiento_con_Arduino_y_Sensor_PIR" class="main-section">
+      <header>
+        <h3>Ejemplo de código detector de movimiento con Arduino y Sensor PIR
+        </h3>
+      </header>
+      <code>const int LEDPin= 13;
+          <br>const int PIRPin= 2;
+          <br>void setup()
+          <br>{
+          <br>pinMode(LEDPin, OUTPUT);
+          <br>pinMode(PIRPin, INPUT);
+          <br>}
+           
+          <br>void loop()
+          <br>{
+          <br>int value= digitalRead(PIRPin);
+           
+          <br>if (value == HIGH)
+          <br>{
+          <br>digitalWrite(LEDPin, HIGH);
+            <br>delay(50);
+            <br>digitalWrite(LEDPin, LOW);
+            <br>delay(50);
+          <br>}
+          <br>else
+          <br>{
+            <br>digitalWrite(LEDPin, LOW);
+            <br>}
+            <br>}
+        </code>
+
+    </section>
+    <!--2-->
+    <section id="Ejemplo_de_codigo_Sensor_Ultrasonico" class="main-section">
+      <header>
+        <h3>Ejemplo de código Sensor Ultrasónico</h3>
+      </header>
+      <code>const int EchoPin = 5;
+        <br> const int TriggerPin = 6;
+         
+        <br>void setup() {
+          <br>Serial.begin(9600);
+          <br>pinMode(TriggerPin, OUTPUT);
+          <br>pinMode(EchoPin, INPUT);
+          <br>}
+         
+          <br>void loop() {
+            <br>int cm = ping(TriggerPin, EchoPin);
+            <br>Serial.print("Distancia: ");
+            <br>Serial.println(cm);
+            <br>delay(1000);
+            <br>}
+         
+            <br>int ping(int TriggerPin, int EchoPin) {
+              <br>long duration, distanceCm;
+           
+              <br>digitalWrite(TriggerPin, LOW);  //para generar un pulso limpio ponemos a LOW 4us
+              <br>delayMicroseconds(4);
+              <br>digitalWrite(TriggerPin, HIGH);  //generamos Trigger (disparo) de 10us
+              <br>delayMicroseconds(10);
+              <br>digitalWrite(TriggerPin, LOW);
+           
+              <br>duration = pulseIn(EchoPin, HIGH);  //medimos el tiempo entre pulsos, en microsegundos
+           
+              <br>distanceCm = duration * 10 / 292/ 2;   //convertimos a distancia, en cm
+              <br>return distanceCm;
+              <br>}
+        </code>
+    </section>
+
+    <!--3-->
+    <section id="Ejemplo_de_codigo_bluetooth_con_Arduino" class="main-section">
+      <header>
+        <h3>Ejemplo de código bluetooth con Arduino</h3>
+      </header>
+      <code>#include -SoftwareSerial.h-
+        <br>SoftwareSerial BT1(10, 11); // RX | TX
+        <br>void setup()
+        <br>{ pinMode(8, OUTPUT);        // Al poner en HIGH forzaremos el modo AT
+          <br>pinMode(9, OUTPUT);        // cuando se alimente de aqui
+          <br>digitalWrite(9, HIGH);
+          <br>delay (500) ;              // Espera antes de encender el modulo
+          <br>Serial.begin(9600);
+          <br>Serial.println("Levantando el modulo HC-06");
+          <br>digitalWrite (8, HIGH);    //Enciende el modulo
+          <br>Serial.println("Esperando comandos AT:");
+          <br>BT1.begin(38400); 
+          <br>}
+         
+          <br>void loop()
+          <br>{  if (BT1.available())
+            <br>Serial.write(BT1.read());
+            <br>if (Serial.available())
+            <br>BT1.write(Serial.read());
+            <br>}
+        </code>
+    </section>
+    <!--4-->
+    <section id="Ejemplo_de_codigo_sensor_de_Humedad_del_suelo_con_Arduino" class="main-section">
+      <header>
+        <h3>Ejemplo de código sensor de Humedad del suelo con Arduino</h3>
+      </header>
+      <code>int rainPin = A0;
+        <br>int greenLED = 6;
+        <br>int redLED = 7;
+        <br>// valor de ajuste del umbral, para la sensibilidad del sensor
+        <br>int thresholdValue = 800;
+        
+        <br>void setup(){
+          <br>pinMode(rainPin, INPUT);
+          <br>pinMode(greenLED, OUTPUT);
+          <br>pinMode(redLED, OUTPUT);
+          <br>digitalWrite(greenLED, LOW);
+          <br>digitalWrite(redLED, LOW);
+          <br>Serial.begin(9600);
+          <br>}
+        
+          <br>void loop() {
+            <br>// lectura de la entrada analoga pin en A0:
+            <br>int sensorValue = analogRead(rainPin);
+            <br>Serial.print(sensorValue);
+            <br>if(sensorValue < thresholdValue){
+              <br>Serial.println(" – Suelo húmedo, no necesita regarse");
+              <br>digitalWrite(redLED, LOW);
+              <br>digitalWrite(greenLED, HIGH);
+              <br>}
+              <br>else {
+                <br>Serial.println(" – Suelo seco, necesita regarse");
+                <br>digitalWrite(redLED, HIGH);
+                <br>digitalWrite(greenLED, LOW);
+                <br>}
+                <br>delay(500);
+                <br>}
+        </code>
+    </section>
+    <!--5-->
+    <section id="Ejemplo_de_codigo_detector_de_llama_con_Arduino" class="main-section">
+      <header>
+        <h3>Ejemplo de código detector de llama con Arduino</h3>
+      </header>
+      <code>int buzzer = 11;      // selecciona el pin para el zumbador
+        <br>int valorSensor = 0;  // variable para almacenar el valor <br>proveniente del sensor
+        <br>void setup() {
+          <br>//Seteo de la velocidad del puerto serial
+          <br>Serial.begin(9600);
+          <br>// declarar buzzer como una SALIDA:
+          <br>pinMode(buzzer, OUTPUT);
+          <br>}
+          <br>void loop() {
+            <br>// leer el valor del sensor:
+            <br>valorSensor = analogRead(A0);
+            <br>Serial.println(valorSensor);
+            <br>// activa el buzzer
+            <br>if (valorSensor < 500){
+              <br>digitalWrite(buzzer, HIGH);
+              <br>delay(100);
+              <br>// Desactiva el buzzer
+              <br>digitalWrite(buzzer, LOW);
+              <br>delay(50);  
+              <br>}
+              <br>}
+        </code>
+    </section>
+
+    <section id="Referencia" class="main-section">
+      <header>
+        <h3>Referencia</h3>
+      </header>
+      <p>Para mas información de click en la imagen.</p>
+      <a href="https://www.arduino.cc/" target="_blank"><img id="img-link" src="img/arduinologo.jpg"></a>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

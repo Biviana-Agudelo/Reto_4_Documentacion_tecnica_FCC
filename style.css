@@ -1,0 +1,69 @@
+body{
+    background-color: rgb(239, 243, 242);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: justify;
+    display: flex;
+    
+}
+nav{
+    float: left;
+    width: 22%;
+    height: 100%;
+    position: fixed;
+    border-right: solid thick rgb(85, 85, 167);
+    padding-top: 8px;
+    overflow-y: scroll;
+
+}
+main{
+    width: 78%;
+    position: relative;
+    left: 22%;
+    padding: 15px 20px 15px 20px; 
+
+}
+.nav-link{
+   
+    margin: 5px;
+    border-bottom: solid thin rgb(85, 85, 167);
+}
+nav h3{
+    border-bottom: solid thin rgb(85, 85, 167);
+    padding-left: 5px;
+    text-align: center;
+}
+section{
+    margin-top: 50px;
+}
+main h4, h6{
+    margin-top: 50px;
+}
+#img-link{
+    width: auto;
+    height: 100px;
+}
+img{
+    width: 300px;
+    height: 300px;
+    display:block;
+    margin:auto;
+    border: 2px solid rgb(0, 0, 0);   
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+#img-arduino{
+    width: 600px;
+    height: 350px;
+    display:block;
+    margin:auto;
+    border: 2px solid rgb(0, 0, 0);   
+    margin-top: 30px;
+}
+code{
+    color: black;
+}
+@media (max-width: 500px) {
+    body {
+      background-color: rgb(171, 210, 241);
+    }
+  }
